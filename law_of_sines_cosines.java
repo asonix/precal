@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.Scanner; //I really don't know if this code works, I just edited it in Github's text editor. Try running it or looking for mistakes.
 
 public class law_of_sines_cosines {
 
@@ -28,34 +28,56 @@ public class law_of_sines_cosines {
 					         "(s) Law of Sines        Calculate ANGLE or SIDE based on (1-2) sides and (1-2) angles\n" +
 					         "(e) to exit\n");
 			choice = (sc.next()).charAt(0);
-			if(choice=='c') {
-				choice_c = 1;
-				choice_h = 0;
-				choice_s = 0;
+			choice_c = 0;
+			choice_h = 0;
+			choice_h = 0;
+			
+			switch(choice) {  //tfw not using case structures
+				case 'c':
+					choice_c = 1;
+					break;
+				case 'h':
+					choice_h = 1;
+					break;
+				case 's':
+					choice_s = 1;
+					break;
+				case 'e':
+					repeat = 0;
+					break;
+				default:
+					System.out.println("Please type the letter identifier of the choice you would like to make.");
+					break;
 			}
-			else if(choice=='h') {
-				choice_c = 0;
-				choice_h = 1;
-				choice_s = 0;
-			}
-			else if(choice=='s') {
-				choice_c = 0;
-				choice_h = 0;
-				choice_s = 1;
-			}
-			else if(choice=='e') {
-				repeat = 0;
-			}
-			else {
-				System.out.println("Please type the letter identifier of the choice you would like to make.");
-			}
+
+//			if(choice=='c') {
+//				choice_c = 1;
+//				choice_h = 0;
+//				choice_s = 0;
+//			}
+//			else if(choice=='h') {
+//				choice_c = 0;
+//				choice_h = 1;
+//				choice_s = 0;
+//			}
+//			else if(choice=='s') {
+//				choice_c = 0;
+//				choice_h = 0;
+//				choice_s = 1;
+//			}
+//			else if(choice=='e') {
+//				repeat = 0;
+//			}
+//			else {
+//				System.out.println("Please type the letter identifier of the choice you would like to make.");
+//			}
 				
 			while(choice_c==1) {
 				//===================//
 				//   law of cosines  //
 				//===================//
 
-				System.out.print("angle: ");
+				System.out.print("angle in degrees (ex. 45): ");
 				angle = sc.nextDouble();
 				System.out.print("side 1: ");
 				a = sc.nextDouble();
@@ -66,7 +88,7 @@ public class law_of_sines_cosines {
 				if(a == 0) { System.out.println("ERROR: side 1 = 0"); choice_c = 0; }
 				if(b == 0) { System.out.println("ERROR: side 2 = 0"); choice_c = 0; }
 				
-				c = Math.sqrt( ( a*a + b*b + ( a*b*Math.cos(Math.toRadians(angle)) ) ) );
+				c = Math.sqrt( ( a*a + b*b + ( a*b*Math.cos(Math.toRadians(angle)) ) ) ); //I may be wrong, but isn't it c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2) - 2*a*b*Math.cos(Math.toRadians(angle)))
 				area = ( (0.5)*a*b*Math.sin(Math.toRadians(angle)) );
 				
 				System.out.println("side 3 = " + c);
@@ -137,10 +159,30 @@ public class law_of_sines_cosines {
 					angle2 = sc.nextDouble();
 					System.out.print("Side 1: ");
 					a = sc.nextDouble();
-					System.out.println("This function is not yet implemented, sorry.");
+					int unknown = 1
+					while(unknown == 1) {
+						System.out.print("Is Side 1 across from Angle 1? (y/n): ");
+						side = (sc.next()).charAt(0);
+						switch(side) {
+							case 'y':
+								b = (a*Math.sin(Math.toRadians(angle2))/Math.sin(Math.toRadians(angle));
+								unknown = 0;
+								break;
+							case 'n':
+								b = (a*Math.sin(Math.toRadians(angle))/Math.sin(Math.toRadians(angle2));
+								unknown = 0;
+								break;
+							default:
+								System.out.print("Please type the letter identifier of the choice you would like to make.");
+								break;
+						}
+					}
+					System.out.print("Side 2 = " + b);
+					//System.out.println("This function is not yet implemented, sorry.");
 				}
 				//IMPLEMENT ME! ^^^^^^^^^
-				else if(num_a >= 3) { System.out.println("The object is not a triangle, exiting."); choice_s=0; }
+				else if(num_a > 3) { System.out.println("The object is not a triangle, exiting."); choice_s=0; }
+				else if(num_a == 3) { System.out.println("The object could be a triangle, but the law of sines does not apply as no side lengths can be gathered knowing only the angles of the triangle, exiting."); choice_s=0; }
 				else if(num_a <= 1) { System.out.println("You need at least 1 angle for this to work, exiting."); choice_s=0; }
 				else                { System.out.println("I can't parse that, exiting."); choice_s=0; }
 				
