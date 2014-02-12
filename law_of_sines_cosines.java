@@ -88,7 +88,7 @@ public class law_of_sines_cosines {
 				if(a == 0) { System.out.println("ERROR: side 1 = 0"); choice_c = 0; }
 				if(b == 0) { System.out.println("ERROR: side 2 = 0"); choice_c = 0; }
 				
-				c = Math.sqrt( ( a*a + b*b + ( a*b*Math.cos(Math.toRadians(angle)) ) ) ); //I may be wrong, but isn't it c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2) - 2*a*b*Math.cos(Math.toRadians(angle)))
+				c = Math.sqrt( ( a*a + b*b - 2*( a*b*Math.cos(Math.toRadians(angle)) ) ) ); //I may be wrong, but isn't it c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2) - 2*a*b*Math.cos(Math.toRadians(angle)))
 				area = ( (0.5)*a*b*Math.sin(Math.toRadians(angle)) );
 				
 				System.out.println("side 3 = " + c);
